@@ -26,7 +26,7 @@ public class TestMapGeoCodesHelper
 	
 	@Test
 	public void testMapRoutesHelperApiKey2() throws UnsupportedOperationException, IOException {
-		List<String> steps = new MapGeoCodes.GeoCodeBuilder()
+		List<Double> steps = new MapGeoCodes.GeoCodeBuilder()
 			.setOrigin("Sudbury")
 			.setRegion(MapRegions.en)
 			.setURL(MapOperations.directions)
@@ -40,7 +40,7 @@ public class TestMapGeoCodesHelper
 	
 	@Test(expected = java.lang.UnsupportedOperationException.class)
 	public void testMapRoutesHelperApiKey3() throws UnsupportedOperationException, IOException {
-		List<String> steps = new MapGeoCodes.GeoCodeBuilder()
+		List<Double> steps = new MapGeoCodes.GeoCodeBuilder()
 			.setOrigin("Ottawa")
 			.setRegion(MapRegions.en)
 			.setURL(MapOperations.directions)
@@ -54,7 +54,7 @@ public class TestMapGeoCodesHelper
 	
 	@Test
 	public void testMapRoutesHelperApiKey4() throws UnsupportedOperationException, IOException {
-		List<String> steps = new MapGeoCodes.GeoCodeBuilder()
+		List<Double> steps = new MapGeoCodes.GeoCodeBuilder()
 			.setOrigin("Sudbury")
 			.setRegion(MapRegions.en)
 			.setURL(MapOperations.directions)
@@ -68,7 +68,7 @@ public class TestMapGeoCodesHelper
 	
 	@Test
 	public void testMapRoutesHelperApiKey5() throws UnsupportedOperationException, IOException {
-		List<String> steps = new MapGeoCodes.GeoCodeBuilder()
+		List<Double> steps = new MapGeoCodes.GeoCodeBuilder()
 			.setOrigin("Sudbury")
 			.setRegion(MapRegions.en)
 			.setURL(MapOperations.directions)
@@ -76,8 +76,8 @@ public class TestMapGeoCodesHelper
 			.getCoordinates();
 		
 		assertNotNull(steps);
-		assertFalse(steps.get(0)==46.4917);
-		assertFalse(steps.get(1)==80.9930);
+		assertTrue(steps.get(0)==46);
+		assertTrue(steps.get(1)==80);
 	}
 	
 }

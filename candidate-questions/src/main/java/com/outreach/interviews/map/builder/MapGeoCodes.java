@@ -95,16 +95,16 @@ public class MapGeoCodes
          * Retrieve the geocoordinates
          * @return List of String containing latitude and longtitude
          */
-        public List<String> getCoordinates() {
+        public List<Double> getCoordinates() {
             if(this.operation.equals(MapOperations.geocode)) {
-                List<String> list = new ArrayList<String>();
-                JsonArray steps = this.result.get("results").getAsJsonArray().get(2).getAsJsonObject()
+                List<Double> list = new ArrayList<Double>();
+                JsonObject steps = this.result.get("results").getAsJsonArray().get(2).getAsJsonObject()
                                     .get("geometry").getAsJsonObject()
-                                    .get("location").getAsJsonArray();
+                                    .get("location").getAsJsonObject();
                 
 
-                list.add(step.get("lat").getAsDouble());
-                list.add(step.get("lng").getAsDouble());
+                list.add(steps.get("lat").getAsDouble());
+                list.add(steps.get("lng").getAsDouble());
 
                 return list;
             } else {
@@ -130,7 +130,7 @@ public class MapGeoCodes
         }
         
         private final String getRegion() {
-            if(this.destination == null)
+            if(this.region == null)
                 throw new IllegalArgumentException("Region cannot be empty");
             
             return this.region.name();
